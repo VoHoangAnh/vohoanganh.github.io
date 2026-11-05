@@ -1,218 +1,319 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="HandheldFriendly" content="true">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Anh H. Vo Resume</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://use.fontawesome.com/809c2bfca6.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anh H. Vo — PhD Candidate, Sejong University</title>
+  <meta name="description" content="Anh H. Vo (Vo Hoang Anh) — PhD candidate in Computer Science at Sejong University, working on multimodal generative AI and embodied AI.">
+  <meta name="author" content="Anh H. Vo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --navy: #1F3A68;
+      --navy-soft: #E8EEF6;
+      --ink: #1d2433;
+      --muted: #5b6475;
+      --line: #e3e7ee;
+      --bg: #ffffff;
+      --panel: #f7f9fc;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, .sans, nav { font-family: "Inter", system-ui, sans-serif; }
+
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 56px;
+      padding: 56px 24px 80px;
+    }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 40px; align-self: start; text-align: center; }
+    .avatar {
+      width: 168px; height: 168px; border-radius: 50%;
+      object-fit: cover; border: 4px solid var(--navy-soft);
+    }
+    .sidebar h1 { font-size: 1.7rem; margin: 18px 0 2px; color: var(--navy); letter-spacing: -0.01em; }
+    .sidebar .native { font-family: "Inter", sans-serif; color: var(--muted); font-size: .9rem; margin: 0 0 12px; }
+    .sidebar .role { font-family: "Inter", sans-serif; font-size: .95rem; line-height: 1.45; margin: 0 0 6px; }
+    .sidebar .loc { font-family: "Inter", sans-serif; color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
+    .links { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; font-family: "Inter", sans-serif; font-size: .92rem; }
+    .links li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+    .links li:last-child { border-bottom: none; }
+    .links i { width: 22px; color: var(--navy); text-align: center; margin-right: 8px; }
+
+    /* Main */
+    nav {
+      display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: .9rem; font-weight: 500;
+      border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 8px;
+    }
+    nav a { color: var(--muted); }
+    nav a:hover { color: var(--navy); text-decoration: none; }
+    section { padding-top: 34px; }
+    h2 {
+      font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--navy); margin: 0 0 16px; padding-bottom: 6px;
+      border-bottom: 2px solid var(--navy);
+    }
+    h3 { font-size: .95rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin: 22px 0 10px; }
+    p { margin: 0 0 12px; }
+
+    .interests { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 4px 0 0; list-style: none; }
+    .interests li {
+      font-family: "Inter", sans-serif; font-size: .85rem; background: var(--navy-soft);
+      color: var(--navy); padding: 5px 12px; border-radius: 999px;
+    }
+
+    /* Publications */
+    .pub { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .pub:last-child { border-bottom: none; }
+    .venue {
+      font-family: "Inter", sans-serif; font-size: .75rem; font-weight: 700; text-align: center;
+      background: var(--navy); color: #fff; border-radius: 4px; padding: 6px 4px; align-self: start; line-height: 1.3;
+    }
+    .pub .title { font-weight: 600; display: block; }
+    .pub .authors, .pub .where { font-size: .95rem; }
+    .pub .where { color: var(--muted); font-style: italic; }
+    .me { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .tag {
+      font-family: "Inter", sans-serif; font-style: normal; font-size: .72rem; font-weight: 600;
+      color: #8a5a00; background: #fff4d6; padding: 2px 7px; border-radius: 4px; margin-left: 6px;
+    }
+    ol.list { padding-left: 1.4em; margin: 0; }
+    ol.list li { margin-bottom: 10px; font-size: .95rem; }
+    details { margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 18px; }
+    summary { font-family: "Inter", sans-serif; font-weight: 600; color: var(--navy); cursor: pointer; }
+    .note { font-family: "Inter", sans-serif; font-size: .82rem; color: var(--muted); }
+
+    /* Timeline entries */
+    .entry { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 10px 0; }
+    .entry .what { font-weight: 600; }
+    .entry .when { font-family: "Inter", sans-serif; font-size: .85rem; color: var(--navy); font-weight: 600; white-space: nowrap; }
+    .entry .where { grid-column: 1 / -1; color: var(--muted); font-size: .95rem; }
+    .entry ul { grid-column: 1 / -1; margin: 4px 0 0; padding-left: 1.2em; font-size: .95rem; }
+
+    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-family: "Inter", sans-serif; font-size: .8rem; color: var(--muted); }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; gap: 24px; padding: 32px 16px 56px; }
+      .sidebar { position: static; }
+      .links { max-width: 340px; margin-left: auto; margin-right: auto; }
+      .pub { grid-template-columns: 1fr; gap: 6px; }
+      .venue { justify-self: start; padding: 4px 10px; }
+    }
+  </style>
 </head>
 <body>
+<div class="layout">
 
-<header>
-    <div class="wrapper">
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <img class="avatar" src="anh.png" alt="Portrait of Anh H. Vo">
+    <h1>Anh H. Vo</h1>
+    <p class="native">Võ Hoàng Anh</p>
+    <p class="role">PhD Candidate in Computer Science<br>Sejong University</p>
+    <p class="loc"><i class="fa-solid fa-location-dot"></i> Seoul, South Korea</p>
+    <ul class="links">
+      <li><a href="mailto:vohoanganh89@gmail.com"><i class="fa-solid fa-envelope"></i>vohoanganh89@gmail.com</a></li>
+      <li><a href="https://scholar.google.com/citations?user=yNtlTxIAAAAJ"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a></li>
+      <li><a href="https://github.com/VoHoangAnh"><i class="fa-brands fa-github"></i>GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0002-7565-5736"><i class="fa-brands fa-orcid"></i>ORCID</a></li>
+      <li><a href="https://www.researchgate.net/profile/Anh-Vo-11"><i class="fa-brands fa-researchgate"></i>ResearchGate</a></li>
+      <li><a href="https://researcherid.com/rid/AAF-7824-2019"><i class="fa-solid fa-id-card"></i>ResearcherID</a></li>
+    </ul>
+  </aside>
 
-      <div class="sidebar">
-          <div class="bio">
-            <div class="avatar">
-              <img src="anh.png" alt="">
-            </div>
-            <div class="title">
-              <h1>Anh H. Vo</h1>
-              <h2>PhD Student at Department of Computer Engineering, Sejong University</h2>
-            </div>
-            <div class="desc">
-              <p>❤ Machine Learning, Data Science, Image Processing, <strong>Computer Vision</strong>.</p>
-            </div>
-            <div class="address">
-              <p>Seoul, South Korea.</p>
-            </div>
-            <div class="social">
-              <ul>
-                <li><a href=""><i class="fa-brands fa-researchgate" style='font-size:36px'></i></a></li>
-                <li><a href="https://github.com/VoHoangAnh"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
-                <li><a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-              </ul>
-            </div>
-          </div>
+  <!-- ===== Main content ===== -->
+  <main>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#patents">Patents</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#service">Service &amp; Awards</a>
+    </nav>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I am a PhD candidate in Computer Science at Sejong University, Seoul. My research focuses on
+        <strong>language-driven multimodal generation</strong> and <strong>embodied AI</strong>, including
+        instruction-driven 3D facial expression generation and language-grounded navigation in 3D environments.</p>
+      <p>Before my PhD, I was a lecturer at the Faculty of Information Technology, Ton Duc Thang University, Vietnam (2012–2023).
+        I am currently <strong>looking for postdoctoral positions</strong> starting in 2027 — feel free to reach out.</p>
+      <ul class="interests">
+        <li>Multimodal Generative AI</li>
+        <li>3D Facial Expression Generation</li>
+        <li>Sign Language Production</li>
+        <li>Vision-and-Language Navigation</li>
+        <li>Embodied AI</li>
+        <li>Computer Vision</li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <p class="note">* corresponding author &nbsp;·&nbsp; † equal contribution</p>
+
+      <div class="pub">
+        <div class="venue">IEEE TMM<br>2025</div>
+        <div>
+          <span class="title">Instruction-Driven 3D Facial Expression Generation and Transition</span>
+          <span class="authors"><span class="me">Anh H. Vo</span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*</span><br>
+          <span class="where">IEEE Transactions on Multimedia, 27, 6140–6153, 2025</span>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="venue">KBS<br>2023</div>
+        <div>
+          <span class="title">Coarse-to-Fine Fusion for Language Grounding in 3D Navigation</span>
+          <span class="authors">Thanh Tin Nguyen†, <span class="me">Anh H. Vo</span>†, Soo-Mi Choi, Yong-Guk Kim*</span><br>
+          <span class="where">Knowledge-Based Systems, 277, 110785, 2023</span>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="venue">EAAI<br>2026</div>
+        <div>
+          <span class="title">Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production</span>
+          <span class="authors">Kim-Thuy Kha, <span class="me">Anh H. Vo</span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*</span><br>
+          <span class="where">Engineering Applications of Artificial Intelligence, 163, 112739, 2026</span>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="venue">Neuro&shy;computing<br>2024</div>
+        <div>
+          <span class="title">A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification</span>
+          <span class="authors"><span class="me">Anh H. Vo</span>, Bao T. Nguyen*</span><br>
+          <span class="where">Neurocomputing, 565, 126972, 2024</span>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="venue">NCAA<br>2023</div>
+        <div>
+          <span class="title">An Efficient Framework for Outfit Compatibility Prediction towards Occasion</span>
+          <span class="authors"><span class="me">Anh H. Vo</span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*</span><br>
+          <span class="where">Neural Computing and Applications, 35, 14213–14226, 2023</span>
+        </div>
       </div>
 
-      <div class="content-wrapper">
-          <div class="content">
-            
-            <div class="title">
-              <i class="fa fa-home" aria-hidden="true"></i>
-              <h2>INFORMATION</h2>
-              <div class="item">
-                <h3> </h3>
-                <p> Research ID: <a href="https://researcherid.com/rid/AAF-7824-2019"><span>AAF-7824-2019 </span></a> </p>
-                <p> ORCID: <a href="https://orcid.org/0000-0002-7565-5736"><span>0000-0002-7565-5736</span></a> </p>
-                <p> Research-gate: <a href="https://www.researchgate.net/profile/Anh-Vo-11"><span>research.gate/profile/vohoanganh</span></a> </p>
-                <p> Google-scholar: <a href="https://scholar.google.com.vn/citations?hl=en&view_op=list_works&gmla=AOV7GLObjPBd3oKVrfi46GrSy75zeR9HY0rqxNZsbcqO7-NQrUK1zlUsksc5PdmQXGDSTF9xoGZaRJEc0RNdSQ&user=yNtlTxIAAAAJ"><span>google.scholar/profile/vohoanganh</span></a> </p>
-              </div>
-            
-            </div>
+      <details>
+        <summary>Full publication list (23 papers)</summary>
 
-            <div class="title">
-              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-              <h2>EDUCATION</h2>
-              <div class="item">
-                <h3>PhD student in Computer Science </h3>
-                <p> Sejong University, South Korea, <span> 2022 - present </span> </p>
-              </div>
-              <div class="item">
-                <h3>Msc in Computer Science </h3>
-                <p> Ho Chi Minh University of Science, Vietnam, <span> 2015</span> </p>
-              </div>
-              <div class="item">
-                <h3>Bsc in Computer Science  </h3>
-                <p>Ho Chi Minh University of Science, Vietnam, <span> 2011 </span> </p>
-              </div>
-            </div>
+        <h3>Journal Articles (SCI/SCIE)</h3>
+        <ol class="list" reversed>
+          <li>Kim-Thuy Kha, <span class="me">Anh H. Vo</span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*. Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production. <em>Engineering Applications of Artificial Intelligence</em>, 163, 112739, 2026.</li>
+          <li><span class="me">Anh H. Vo</span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*. Instruction-Driven 3D Facial Expression Generation and Transition. <em>IEEE Transactions on Multimedia</em>, 27, 6140–6153, 2025.</li>
+          <li><span class="me">Anh H. Vo</span>, Bao T. Nguyen*. A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification. <em>Neurocomputing</em>, 565, 126972, 2024.</li>
+          <li>Thanh Tin Nguyen†, <span class="me">Anh H. Vo</span>†, Soo-Mi Choi, Yong-Guk Kim*. Coarse-to-Fine Fusion for Language Grounding in 3D Navigation. <em>Knowledge-Based Systems</em>, 277, 110785, 2023.</li>
+          <li><span class="me">Anh H. Vo</span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*. An Efficient Framework for Outfit Compatibility Prediction towards Occasion. <em>Neural Computing and Applications</em>, 35, 14213–14226, 2023.</li>
+          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>, Huong Bui, Tuong Le*. A Hybrid Deep Learning Approach for PM2.5 Concentration Prediction in Smart Environmental Monitoring. <em>Intelligent Automation &amp; Soft Computing</em>, 36(3), 3029–3041, 2023.</li>
+          <li>Hung-Cuong Trinh*†, Van-Huy Pham, <span class="me">Anh H. Vo</span>. Remaining Useful Life Estimation Based on Noise Injection and a Kalman Filter Ensemble of Modified Bagging Predictors. <em>KSII Transactions on Internet and Information Systems</em>, 17(12), 2023.</li>
+          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>*, Tuong Le. A Robust Framework for Shoulder Implant X-ray Image Classification. <em>Data Technologies and Applications</em>, 2021.</li>
+          <li>Minh T. Vo, Trang Nguyen, <span class="me">H. Anh Vo</span>, Tuong Le*. Noise-Adaptive Synthetic Oversampling Technique. <em>Applied Intelligence</em>, 51, 7827–7836, 2021.</li>
+          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>, Trang Nguyen, Rohit Sharma, Tuong Le*. Dealing with the Class Imbalance Problem in the Detection of Fake Job Descriptions. <em>Computers, Materials &amp; Continua</em>, 68(1), 521–535, 2021.</li>
+          <li><span class="me">Anh H. Vo</span>, Trang Nguyen, Tuong Le*. Brent Oil Price Prediction Using Bi-LSTM Network. <em>Intelligent Automation &amp; Soft Computing</em>, 26(6), 1307–1317, 2020.</li>
+          <li><span class="me">Anh H. Vo</span>, Minh T. Vo, L. H. Son, Tuong Le*. A Novel Framework for Trash Classification Using Deep Transfer Learning. <em>IEEE Access</em>, 7, 178631–178639, 2019.</li>
+        </ol>
 
+        <h3>Journal Articles (Scopus)</h3>
+        <ol class="list" reversed>
+          <li>Bao T. Nguyen*, <span class="me">Anh H. Vo</span>. Detecting Lung Diseases from X-Ray Images Using Deep Learning. <em>Statistics, Optimization &amp; Information Computing</em>, 13(1), 297–308, 2024.</li>
+          <li>Bao T. Nguyen*, Son T. Nguyen, <span class="me">Anh H. Vo</span>. Channel and Spatial Attention Mechanism for Fashion Image Captioning. <em>International Journal of Electrical and Computer Engineering</em>, 13(5), 5833–5842, 2023.</li>
+          <li><span class="me">Anh H. Vo</span>, Hoa T. Dang, Bao T. Nguyen, Van-Huy Pham*. Vietnamese Herbal Plant Recognition Using Deep Convolutional Features. <em>International Journal of Machine Learning and Computing</em>, 9(3), 363–367, 2019.</li>
+          <li><span class="me">Anh H. Vo</span>, Huy V. Pham*, Bao T. Nguyen. Deep Learning for Vietnamese Sign Language in Video Sequences. <em>International Journal of Machine Learning and Computing</em>, 9(4), 440–445, 2019.</li>
+        </ol>
 
-            <div class="title">
-              <i class="fa fa-briefcase" aria-hidden="true"></i>
-              <h2>EXPERIENCE</h2>
-              <div class="item">
-                <h3>TEACHING  </h3>
-                <p>Lecturer at Ton Duc Thang University, Vietnam, <span>Jan 2012 - 2023 </span> </p>
-              </div>
-              <div class="item">
-                <h3>REVIEWER </h3>
-                <p>(1) Computer Vision and Image Understanding
-                  Journal, (2) IEEE Access, (3) Computers and Electrical Engineering, (4)
-                  Intelligent Automation & Soft Computing, (5) The Imaging Science Journal.</p>
-              </div>
-            </div>
+        <h3>Conference Papers</h3>
+        <ol class="list" reversed>
+          <li>Khuong G. T. Diep, Viet-Tuan Le, Tae-Seok Kim, <span class="me">Anh H. Vo</span>, Yong-Guk Kim. Novel Reward Function for Autonomous Drone Navigating in Indoor Environment. <em>Annual Conference of KIPS</em>, 624–627, Busan, 2023. <span class="tag">Best Paper Award</span></li>
+          <li><span class="me">Anh H. Vo</span>, Nhu Nguyen, Thu Nguyen, Thu Dang, Duong Nguyen, Bao T. Nguyen*. An Automatic Recommendation System for Plant Disease Treatment. <em>GTSD</em>, Nha Trang, Vietnam, 2022.</li>
+          <li>Bao T. Nguyen*†, Om Prakash, <span class="me">Anh H. Vo</span>. Attention Mechanism for Fashion Image Captioning. <em>GTSD</em>, Da Nang, Vietnam, 2020.</li>
+          <li><span class="me">Anh H. Vo</span>, Nhu T. Q. Nguyen, Ngan T. B. Nguyen, Ta Van Giap, Van-Huy Pham*, Bao T. Nguyen*. Video-Based Vietnamese Sign Language Recognition Using Local Descriptors. <em>ACIIDS</em>, Yogyakarta, Indonesia, 2019.</li>
+          <li>Canh P. Nguyen, <span class="me">Anh H. Vo</span>, Bao T. Nguyen*. Breast Cancer Histology Image Classification Using Deep Learning. <em>ISCIT</em>, Ho Chi Minh City, Vietnam, 2019.</li>
+          <li><span class="me">Anh Vo</span>, Bao T. Nguyen*. Facial Expression Recognition Based on Salient Regions. <em>GTSD</em>, Ho Chi Minh City, Vietnam, 2018.</li>
+          <li><span class="me">Anh Vo</span>*, Ngoc Quoc Ly. Facial Expression Recognition Using Pyramid of Local Phase Quantization Descriptor. <em>KSE</em>, Springer, Hanoi, Vietnam, 2015.</li>
+        </ol>
+      </details>
+    </section>
 
-            <div class="title">
-              <i class="fa fa-trophy" aria-hidden="true"></i>
-              <h2>PUBLICATIONS</h2>
-              <div class="item">
-                <h3> SCI/SCIE JOURNALS </h3>
-                <p></p>
-                <p>(12) Kim-Thuy Kha, <span><b>Anh H. Vo</b></span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*. 
-                Temporal diffuser: Timing scale-aware modulation for sign language production. Engineering Applications of Artificial Intelligence, 163, 112739, 2026 </p>
-                <p>(11) <span><b>Anh H. Vo</b></span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*. 
-                Instruction-Driven 3D Facial Expression Generation and Transition. IEEE Transactions on Multimedia, 27, 6140 - 6153, 2025 </p>
-                <p>(10) <span><b>Anh H. Vo</b></span>, Bao T. Nguyen*. 
-                A framework-based transformer and knowledge distillation for interior style classification. 
-                Neurocomputing, 565, 126972, 2024 </p>
-                <p>(9)  Thanh Tin Nguyen, <span><b>Anh H. Vo</b></span>, Soo-Mi Choi, Yong-Guk Kim*. 
-                Coarse-to-fine fusion for language grounding in 3D navigation. 
-                Knowledge-Based Systems, 277, 110785, 2023 </p>
-                <p>(8)  <span><b>Anh H. Vo</b></span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*. 
-                An efficient framework for outfit compatibility prediction towards occasion. 
-                Neural Computing and Applications, 35, 14213–14226, 2023 </p>
-                <p>(7) Minh T. Vo, <span><b>Anh H. Vo</b></span>, Huong Bui, Tuong Le*. 
-                A Hybrid Deep Learning Approach for PM2.5 Concentration Prediction in Smart Environmental Monitoring. 
-                  Intelligent Automation & Soft Computing, 36(3),  3029-3041, 2023 </p>
-                <p>(6) Hung-Cuong Trinh*, Van-Huy Pham, <span><b> Anh H. Vo</b></span>. 
-                Remaining Useful Life Estimation based on Noise Injection and a Kalman Filter Ensemble of modified Bagging Predictors. 
-                  KSII Transaction on Internet and Information Systems, 17(12) , 2023 </p>
-                <p>(5) Minh T. Vo, <span><b>Anh H. Vo*</b></span>, Tuong Le. A robust framework for shoulder implant
-                  X-ray image classification. Data Technologies and Applications, 2021 </p>
-                <p>(4) Minh T. Vo, Trang Nguyen, <span><b>H.Anh Vo</b></span>, Tuong Le*. Noise-adaptive synthetic
-                  oversampling technique. Applied Intelligence, 51, 7827-7836, 2021</p>
-                <p>(3) Minh T. Vo, <span><b>Anh H. Vo</b></span>, Trang Nguyen, Rohit Sharma, Tuong Le*. Dealing
-                  with the Class Imbalance Problem in the Detection of Fake Job Descriptions.
-                  CMC-Computers Materials & Continua, 68(1), 521-535, 2021</p>
-                <p>(2) <span><b>Anh H. Vo</b></span>, Trang Nguyen, Tuong Le*. Brent Oil Price Prediction using Bi-LSTM
-                  Network. Intelligent Automation & Soft Computing, 26(6),1307-1317, 2020 </p>
-                <p>(1) <span><b>Anh H. Vo</b></span>, Minh T. Vo, L.H. Son, Tuong Le*. A Novel Framework for Trash
-                  Classification using Deep Transfer Learning. IEEE Access, 7(1), 178631-178639,
-                  2019</p>
-              </div>
-              <div class="item">
-                <h3> SCOPUS JOURNALS </h3>
-                <p> </p>
-                <p> (4) Bao T. Nguyen*, <span><b>Anh H. Vo</b></span>, Detecting lung diseases from X-Ray images using deep learning. 
-                  Statistics, Optimization & Information Computing, 13(1), 297-308, 2024</p>
-                <p> (3) Bao T. Nguyen*, Son T. Nguyen, <span><b>Anh H. Vo</b></span>, Channel and spatial attention mechanism for fashion image captioning. 
-                  International Journal of Electrical and Computer Engineering (IJECE), 13(5), 5833-5842, 2023</p>
-                <p> (2) <span><b>Anh H. Vo</b></span>, Hoa T. Dang, Bao T. Nguyen, Van-Huy Pham*. Vietnamese Herbal
-                  Plant Recognition using Deep Convolutional Feature. International Journal of
-                  Machine Learning and Computing, 9(3), 363-367, 2019 </p>
-                <p> (1) <span><b>Anh H. Vo</b></span>, Huy V Pham*, Bao T. Nguyen. Deep Learning for Vietnamese
-                  Sign Language in Video Sequence. International Journal of Machine Learning and
-                  Computing, 9(4), 440-445, 2019 </p>
-              </div>
-              <div class="item">
-                <h3> INTERNATIONAL CONFERENCES </h3>
-                <p></p>
-                <p>(6) <span><b> Anh H. Vo </b></span>, Nhu Nguyen, Thu Nguyen, Thu Dang, Duong Nguyen, Bao T. Nguyen*. An Automatic Recommendation Systems
-                  for Plant Disease Treatment. In the 6th International Conference on Green Technology and
-                  Sustainable Development (GTSD), July 29-30, 2022, Nha Trang, Vietnam</p>
-                <p>(5) Bao T Nguyen*, Om Prakash, <span><b>Anh H. Vo</b></span>. Attention Mechanism for Fashion
-                  Image Captionning. In the 5th International Conference on Green Technology and
-                  Sustainable Development (GTSD), November 23-24, 2020, Da Nang, Vietnam</p>
-                <p>(4) <span><b>Anh H. Vo</b></span>, Nhu T. Q. Nguyen, Ngan T. B. Nguyen, Ta Van Giap, Van-Huy Pham*, Bao T. Nguyen*. Video-based Vietnamese Sign Language Recognition using
-                  Local Descriptors. In the 11th Asian Conference on Intelligent Information and
-                  Database Systems (ACIIDS), April 8-11, 2019, Yogyakarta, Indonesia </p>
-                <p>(3) Canh P. Nguyen, <span><b>Anh H. Vo</b></span>, Bao T. Nguyen*. Breast Cancer Histology Image
-                  Classification using Deep Learning. 19th International Symposium on Communications and Information Technologies (ISCIT), 25-27 September, 2019, Ho Chi Minh, Vietnam</p>
-                <p>(2) <span><b>Anh Vo</b></span>, Bao T. Nguyen*. Facial Expression Recognition Based on Salient Regions. In the 4th International Conference on Green Technology and Sustainable
-                  Development (GTSD), November 23-24, 2018, Ho Chi Minh, Vietnam</p>
-                <p>(1) <span><b>Anh Vo*</b></span>, Ngoc Quoc Ly. Facial Expression Recognition using Pyramid of Local
-                  Phase Quantization Descriptor. In the 6 th International Conference Knowledge and
-                  Systems Engineering (KSE), Springer - Verlag, October 9-11, Ha Noi, Vietnam,
-                  2015</p>
-              </div>
-              <p>*corresponding author.</p>
-            </div>
+    <section id="patents">
+      <h2>Patents</h2>
+      <p><strong>Language Command-Based Coarse-to-Fine Fusion Method and Apparatus for Virtual Space Navigation</strong><br>
+        <span lang="ko">언어명령 기반 가상 공간 항해를 위한 코스-투-파인 융합 방법 및 그 장치</span><br>
+        Co-inventor · Korean Patent No. 10-2979119 · Granted June 15, 2026 (KIPO) · Assignee: Sejong University Industry-Academic Cooperation Foundation</p>
+    </section>
 
-            <div class="title">
-              <i class="fa fa-code" aria-hidden="true"></i>
-              <h2>SKILLS</h2>
-              <div class="item w33">
-                <h3>Python</h3>
-                <div class="skills">
-                  <span style="width: 95%"></span>
-                </div>
-              </div>
-              <div class="item w33" >
-                <h3>Matlab</h3>
-                <div class="skills">
-                  <span style="width: 75%"></span>
-                </div>
-              </div>
-
-              <div class="item w33" >
-                <h3>C/C++/C#</h3>
-                <div class="skills">
-                  <span style="width: 50%"></span>
-                </div>
-              </div>
-              <div class="item w33">
-                <h3>OpenCV</h3>
-                <div class="skills">
-                  <span style="width: 65%"></span>
-                </div>
-              </div>
-              
-              <div class="item w33">
-                <h3>Pytorch</h3>
-                <div class="skills">
-                  <span style="width: 65%"></span>
-                </div>
-              </div>
-
-              <div class="item w33">
-                <h3>Keras</h3>
-                <div class="skills">
-                  <span style="width: 55%"></span>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <span class="what">Ph.D. in Computer Science</span><span class="when">2022 – present</span>
+        <span class="where">Sejong University, Seoul, South Korea</span>
       </div>
+      <div class="entry">
+        <span class="what">M.Sc. in Computer Science</span><span class="when">2015</span>
+        <span class="where">Ho Chi Minh City University of Science, Vietnam</span>
+      </div>
+      <div class="entry">
+        <span class="what">B.Sc. in Computer Science</span><span class="when">2011</span>
+        <span class="where">Ho Chi Minh City University of Science, Vietnam</span>
+      </div>
+      <div class="entry">
+        <span class="what">Erasmus+ Exchange Program</span><span class="when">2016</span>
+        <span class="where">Wroclaw University of Science and Technology, Poland</span>
+      </div>
+    </section>
 
-    </div>
-</header>
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="entry">
+        <span class="what">Graduate Researcher</span><span class="when">2022 – present</span>
+        <span class="where">Sejong University, Seoul, South Korea</span>
+        <ul>
+          <li>Instruction-driven 3D facial expression generation and transition (IEEE TMM 2025)</li>
+          <li>Coarse-to-fine multimodal fusion for language-grounded 3D navigation (KBS 2023; Korean Patent 10-2979119)</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <span class="what">Lecturer</span><span class="when">2012 – 2023</span>
+        <span class="where">Faculty of Information Technology, Ton Duc Thang University, Vietnam</span>
+        <ul>
+          <li>Taught Digital Image Processing, Computer Graphics, Data Structures and Algorithms, Linear Algebra, Numerical Analysis, and more</li>
+          <li>Supervised undergraduate theses, several leading to peer-reviewed publications</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="service">
+      <h2>Service &amp; Awards</h2>
+      <p><strong>Journal reviewer:</strong> Computer Vision and Image Understanding, IEEE Access,
+        Computers and Electrical Engineering, Intelligent Automation &amp; Soft Computing, The Imaging Science Journal.</p>
+      <div class="entry">
+        <span class="what">Best Paper Award, Korea Information Processing Society (KIPS)</span><span class="when">2023</span>
+      </div>
+      <div class="entry">
+        <span class="what">Erasmus+ Mobility Scholarship, Wroclaw University of Science and Technology</span><span class="when">2016</span>
+      </div>
+      <p class="sans" style="margin-top:12px;font-size:.92rem"><strong>Skills:</strong> Python, PyTorch, Keras, scikit-learn, OpenCV, OpenGL, Unity3D, C/C++, MATLAB, LaTeX</p>
+    </section>
+
+    <footer>Last updated November 2026</footer>
+  </main>
+</div>
 </body>
 </html>
