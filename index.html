@@ -1,170 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anh H. Vo — PhD Candidate, Sejong University</title>
-  <meta name="description" content="Anh H. Vo (Vo Hoang Anh) — PhD candidate in Computer Science at Sejong University, working on multimodal generative AI and embodied AI.">
-  <meta name="author" content="Anh H. Vo">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-    :root {
-      --navy: #1F3A68;
-      --navy-soft: #E8EEF6;
-      --ink: #1d2433;
-      --muted: #5b6475;
-      --line: #e3e7ee;
-      --bg: #ffffff;
-      --panel: #f7f9fc;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: 17px;
-      line-height: 1.6;
-    }
-    a { color: var(--navy); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    h1, h2, h3, .sans, nav { font-family: "Inter", system-ui, sans-serif; }
-
-    .layout {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 56px;
-      padding: 56px 24px 80px;
-    }
-
-    /* Sidebar */
-    .sidebar { position: sticky; top: 40px; align-self: start; text-align: center; }
-    .avatar {
-      width: 168px; height: 168px; border-radius: 50%;
-      object-fit: cover; border: 4px solid var(--navy-soft);
-    }
-    .sidebar h1 { font-size: 1.7rem; margin: 18px 0 2px; color: var(--navy); letter-spacing: -0.01em; }
-    .sidebar .native { font-family: "Inter", sans-serif; color: var(--muted); font-size: .9rem; margin: 0 0 12px; }
-    .sidebar .role { font-family: "Inter", sans-serif; font-size: .95rem; line-height: 1.45; margin: 0 0 6px; }
-    .sidebar .loc { font-family: "Inter", sans-serif; color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
-    .links { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; font-family: "Inter", sans-serif; font-size: .92rem; }
-    .links li { padding: 6px 0; border-bottom: 1px solid var(--line); }
-    .links li:last-child { border-bottom: none; }
-    .links i { width: 22px; color: var(--navy); text-align: center; margin-right: 8px; }
-
-    /* Main */
-    nav {
-      display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: .9rem; font-weight: 500;
-      border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 8px;
-    }
-    nav a { color: var(--muted); }
-    nav a:hover { color: var(--navy); text-decoration: none; }
-    section { padding-top: 34px; }
-    h2 {
-      font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em;
-      color: var(--navy); margin: 0 0 16px; padding-bottom: 6px;
-      border-bottom: 2px solid var(--navy);
-    }
-    h3 { font-size: .95rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin: 22px 0 10px; }
-    p { margin: 0 0 12px; }
-
-    .interests { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 4px 0 0; list-style: none; }
-    .interests li {
-      font-family: "Inter", sans-serif; font-size: .85rem; background: var(--navy-soft);
-      color: var(--navy); padding: 5px 12px; border-radius: 999px;
-    }
-
-    /* Publications */
-    .pub { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-    .pub:last-child { border-bottom: none; }
-    .venue {
-      font-family: "Inter", sans-serif; font-size: .75rem; font-weight: 700; text-align: center;
-      background: var(--navy); color: #fff; border-radius: 4px; padding: 6px 4px; align-self: start; line-height: 1.3;
-    }
-    .pub .title { font-weight: 600; display: block; }
-    .pub .authors, .pub .where { font-size: .95rem; }
-    .pub .where { color: var(--muted); font-style: italic; }
-    .me { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-    .tag {
-      font-family: "Inter", sans-serif; font-style: normal; font-size: .72rem; font-weight: 600;
-      color: #8a5a00; background: #fff4d6; padding: 2px 7px; border-radius: 4px; margin-left: 6px;
-    }
-    .pub-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-    .pub-links a {
-      font-family: "Inter", sans-serif; font-size: .78rem; font-weight: 600;
-      color: var(--navy); border: 1px solid var(--navy); border-radius: 4px; padding: 2px 9px;
-    }
-    .pub-links a:hover { background: var(--navy); color: #fff; text-decoration: none; }
-    .pub-links a[href=""] { display: none; } /* unfilled links are hidden automatically */
-    ol.list { padding-left: 1.4em; margin: 0; }
-    ol.list li { margin-bottom: 10px; font-size: .95rem; }
-    details { margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 18px; }
-    summary { font-family: "Inter", sans-serif; font-weight: 600; color: var(--navy); cursor: pointer; }
-    .note { font-family: "Inter", sans-serif; font-size: .82rem; color: var(--muted); }
-
-    /* Timeline entries */
-    .entry { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 10px 0; }
-    .entry .what { font-weight: 600; }
-    .entry .when { font-family: "Inter", sans-serif; font-size: .85rem; color: var(--navy); font-weight: 600; white-space: nowrap; }
-    .entry .where { grid-column: 1 / -1; color: var(--muted); font-size: .95rem; }
-    .entry ul { grid-column: 1 / -1; margin: 4px 0 0; padding-left: 1.2em; font-size: .95rem; }
-
-    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-family: "Inter", sans-serif; font-size: .8rem; color: var(--muted); }
-
-    @media (max-width: 860px) {
-      .layout { grid-template-columns: 1fr; gap: 24px; padding: 32px 16px 56px; }
-      .sidebar { position: static; }
-      .links { max-width: 340px; margin-left: auto; margin-right: auto; }
-      .pub { grid-template-columns: 1fr; gap: 6px; }
-      .venue { justify-self: start; padding: 4px 10px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anh H. Vo — PhD Candidate, Sejong University</title>
+<meta name="description" content="Anh H. Vo (Võ Hoàng Anh) — PhD candidate in Computer Science at Sejong University, working on language-driven multimodal generation and embodied AI.">
+<meta name="author" content="Anh H. Vo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="layout">
 
-  <!-- ===== Sidebar ===== -->
-  <aside class="sidebar">
-    <img class="avatar" src="anh.png" alt="Portrait of Anh H. Vo">
-    <h1>Anh H. Vo</h1>
-    <p class="native">Võ Hoàng Anh</p>
-    <p class="role">PhD Candidate in Computer Science<br>Sejong University</p>
-    <p class="loc"><i class="fa-solid fa-location-dot"></i> Seoul, South Korea</p>
-    <ul class="links">
-      <li><a href="mailto:vohoanganh89@gmail.com"><i class="fa-solid fa-envelope"></i>vohoanganh89@gmail.com</a></li>
-      <li><a href="https://scholar.google.com/citations?user=yNtlTxIAAAAJ"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a></li>
-      <li><a href="https://github.com/VoHoangAnh"><i class="fa-brands fa-github"></i>GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0002-7565-5736"><i class="fa-brands fa-orcid"></i>ORCID</a></li>
-      <li><a href="https://www.researchgate.net/profile/Anh-Vo-11"><i class="fa-brands fa-researchgate"></i>ResearchGate</a></li>
-      <li><a href="https://researcherid.com/rid/AAF-7824-2019"><i class="fa-solid fa-id-card"></i>ResearcherID</a></li>
-    </ul>
-  </aside>
-
-  <!-- ===== Main content ===== -->
-  <main>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#publications">Publications</a>
-      <a href="#patents">Patents</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#service">Service &amp; Awards</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Anh H. Vo</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="patents-awards.html">Patents &amp; Awards</a>
+      <a href="experience.html">Experience</a>
+      <a href="datasets.html">Datasets</a>
     </nav>
+  </div>
+</header>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>I am a PhD candidate in Computer Science at Sejong University, Seoul. My research focuses on
-        <strong>language-driven multimodal generation</strong> and <strong>embodied AI</strong>, including
-        instruction-driven 3D facial expression generation and language-grounded navigation in 3D environments.</p>
-      <p>Before my PhD, I was a lecturer at the Faculty of Information Technology, Ton Duc Thang University, Vietnam (2012–2023).
-        I am currently <strong>looking for postdoctoral positions</strong> starting in 2028 — feel free to reach out.</p>
-      <ul class="interests">
+<main>
+  <section class="wrap hero" id="top">
+    <aside class="hero-side">
+      <img src="assets/img/anh.png" alt="Portrait of Anh H. Vo">
+      <ul class="contact">
+        <li><a href="mailto:vohoanganh89@gmail.com"><i class="fa-solid fa-envelope"></i>vohoanganh89@gmail.com</a></li>
+        <li><a href="https://scholar.google.com/citations?user=yNtlTxIAAAAJ"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a></li>
+        <li><a href="https://github.com/VoHoangAnh"><i class="fa-brands fa-github"></i>GitHub</a></li>
+        <li><a href="https://orcid.org/0000-0002-7565-5736"><i class="fa-brands fa-orcid"></i>ORCID</a></li>
+        <li><a href="https://www.researchgate.net/profile/Anh-Vo-11"><i class="fa-brands fa-researchgate"></i>ResearchGate</a></li>
+        <li><a href="https://researcherid.com/rid/AAF-7824-2019"><i class="fa-solid fa-id-card"></i>ResearcherID</a></li>
+        <!-- <li><a href="cv.pdf"><i class="fa-solid fa-file-pdf"></i>CV (PDF)</a></li> -->
+      </ul>
+    </aside>
+    <div class="hero-body">
+      <p class="kicker">PhD Candidate · Computer Science</p>
+      <h1>Anh H. Vo</h1>
+      <p class="native">Võ Hoàng Anh</p>
+      <p class="affil">PhD Program in Computer Science, Sejong University</p>
+      <p class="loc">Seoul, Republic of Korea · Advisor: Prof. Yong-Guk Kim</p>
+      <p class="bio">My research focuses on <strong>language-driven multimodal generation</strong> and <strong>embodied AI</strong>, including instruction-driven 3D facial expression generation, sign language production, and language-grounded navigation in 3D environments. Before my PhD, I was a lecturer at the Faculty of Information Technology, Ton Duc Thang University, Vietnam (2012–2023).</p>
+      <p class="callout">I am <strong>looking for postdoctoral positions</strong> starting in 2028 — feel free to reach out.</p>
+      <ul class="chips" aria-label="Research interests">
         <li>Multimodal Generative AI</li>
         <li>3D Facial Expression Generation</li>
         <li>Sign Language Production</li>
@@ -172,189 +57,269 @@
         <li>Embodied AI</li>
         <li>Computer Vision</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section id="publications">
-      <h2>Selected Publications</h2>
-      <p class="note">* corresponding author &nbsp;·&nbsp; † equal contribution</p>
+  <section class="band" id="selected">
+    <div class="wrap section">
+      <h2 class="sec">Selected Papers</h2>
+      <p class="lede">Recent work on multimodal generation, sign language production and language-grounded navigation. <span class="note">* corresponding author · † equal contribution</span></p>
 
-      <div class="pub">
-        <div class="venue">IEEE TMM<br>2025</div>
-        <div>
-          <span class="title">Instruction-Driven 3D Facial Expression Generation and Transition</span>
-          <span class="authors"><span class="me">Anh H. Vo</span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*</span><br>
-          <span class="where">IEEE Transactions on Multimedia, 27, 6140–6153, 2025</span>
-          <div class="pub-links"><!-- IEEE TMM 2025: paste URLs between the quotes; empty ones stay hidden -->
-            <a href="https://arxiv.org/abs/2601.08179"><i class="fa-solid fa-scroll"></i> arXiv</a>
-            <!-- <a href=""><i class="fa-brands fa-github"></i> Code</a> -->
-            <a href="https://vohoanganh.github.io/tg3dfet/"><i class="fa-solid fa-globe"></i> Project</a>
-            <!-- <a href=""><i class="fa-solid fa-link"></i> DOI</a> -->
+      <div class="paper-list">
+        <!-- Media: put demo files in assets/videos/ (mp4) or assets/img/ (jpg/png) and edit data-playlist.
+             Several items per paper are allowed, e.g.
+             [{"type":"video","src":"assets/videos/a.mp4","caption":"..."},{"type":"image","src":"assets/img/b.jpg","caption":"..."}] -->
+        <article class="paper">
+          <figure class="pm-media" data-playlist="[{&quot;type&quot;:&quot;video&quot;,&quot;src&quot;:&quot;assets/videos/id3d2025-teaser.mp4&quot;,&quot;poster&quot;:&quot;&quot;,&quot;caption&quot;:&quot;Instruction-driven 3D facial expression generation and transition&quot;}]">
+            <video muted playsinline preload="metadata"></video>
+            <img class="pm-img" alt="" hidden>
+            <div class="pm-ph" aria-hidden="true"><i class="fa-solid fa-film"></i><span>Demo coming soon</span></div>
+            <figcaption><span class="pm-cap"></span><span class="pm-dots" role="group" aria-label="Choose video or image"></span></figcaption>
+          </figure>
+          <div class="paper-body">
+            <p class="venue-tag">IEEE TMM · 2025</p>
+            <h3>Instruction-Driven 3D Facial Expression Generation and Transition</h3>
+            <p class="authors"><span class="me">Anh H. Vo</span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*</p>
+            <p class="where">IEEE Transactions on Multimedia, 27, 6140–6153, 2025</p>
+            <div class="plinks"><!-- paste URLs between the quotes; empty ones stay hidden -->
+              <a href="https://doi.org/10.1109/TMM.2025.3565929">Paper</a>
+              <a href="https://arxiv.org/abs/2601.08179">arXiv</a>
+              <a href="https://vohoanganh.github.io/tg3dfet/">Project page</a>
+              <a href="">Code</a>
+              <button class="bib-btn" type="button" aria-expanded="false">BibTeX</button>
+            </div>
+            <div class="bib" hidden><button class="bib-copy" type="button">Copy</button><pre>@article{vo2025instruction,
+  author  = {Vo, Anh H. and Kim, Tae-Seok and Jin, Hulin and Choi, Soo-Mi and Kim, Yong-Guk},
+  title   = {{Instruction-Driven 3D Facial Expression Generation and Transition}},
+  journal = {IEEE Transactions on Multimedia},
+  volume  = {27},
+  pages   = {6140--6153},
+  year    = {2025},
+  doi     = {10.1109/TMM.2025.3565929}
+}</pre></div>
           </div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="venue">KBS<br>2023</div>
-        <div>
-          <span class="title">Coarse-to-Fine Fusion for Language Grounding in 3D Navigation</span>
-          <span class="authors">Thanh Tin Nguyen†, <span class="me">Anh H. Vo</span>†, Soo-Mi Choi, Yong-Guk Kim*</span><br>
-          <span class="where">Knowledge-Based Systems, 277, 110785, 2023</span>
-          <div class="pub-links"><!-- KBS 2023: paste URLs between the quotes; empty ones stay hidden -->
-            <!-- <a href=""><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            <a href=""><i class="fa-solid fa-scroll"></i> arXiv</a> -->
-            <!-- <a href=""><i class="fa-brands fa-github"></i> Code</a> -->
-            <!-- <a href=""><i class="fa-solid fa-globe"></i> Project</a> -->
-            <!-- <a href=""><i class="fa-solid fa-link"></i> DOI</a> -->
+        </article>
+
+        <article class="paper">
+          <figure class="pm-media" data-playlist="[{&quot;type&quot;:&quot;video&quot;,&quot;src&quot;:&quot;assets/videos/tsam2026-teaser.mp4&quot;,&quot;poster&quot;:&quot;&quot;,&quot;caption&quot;:&quot;Sign language production with Temporal Diffuser&quot;}]">
+            <video muted playsinline preload="metadata"></video>
+            <img class="pm-img" alt="" hidden>
+            <div class="pm-ph" aria-hidden="true"><i class="fa-solid fa-film"></i><span>Demo coming soon</span></div>
+            <figcaption><span class="pm-cap"></span><span class="pm-dots" role="group" aria-label="Choose video or image"></span></figcaption>
+          </figure>
+          <div class="paper-body">
+            <p class="venue-tag">EAAI · 2026</p>
+            <h3>Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production</h3>
+            <p class="authors">Kim-Thuy Kha, <span class="me">Anh H. Vo</span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*</p>
+            <p class="where">Engineering Applications of Artificial Intelligence, 163, 112739, 2026</p>
+            <div class="plinks"><!-- paste URLs between the quotes; empty ones stay hidden -->
+              <a href="https://doi.org/10.1016/j.engappai.2025.112739">Paper</a>
+              <a href="https://github.com/kha-kim-thuy/Sign-Diffusion-Model">Code</a>
+              <a href="https://kha-kim-thuy.github.io/SLP-Demo/">Project page</a>
+              <a href="">arXiv</a>
+              <button class="bib-btn" type="button" aria-expanded="false">BibTeX</button>
+            </div>
+            <div class="bib" hidden><button class="bib-copy" type="button">Copy</button><pre>@article{kha2026temporal,
+  author  = {Kha, Kim-Thuy and Vo, Anh H. and Le, Van-Vang and Song, Oh-Young and Kim, Yong-Guk},
+  title   = {{Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production}},
+  journal = {Engineering Applications of Artificial Intelligence},
+  volume  = {163},
+  pages   = {112739},
+  year    = {2026},
+  doi     = {10.1016/j.engappai.2025.112739}
+}</pre></div>
           </div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="venue">EAAI<br>2026</div>
-        <div>
-          <span class="title">Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production</span>
-          <span class="authors">Kim-Thuy Kha, <span class="me">Anh H. Vo</span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*</span><br>
-          <span class="where">Engineering Applications of Artificial Intelligence, 163, 112739, 2026</span>
-          <div class="pub-links"><!-- EAAI 2026: paste URLs between the quotes; empty ones stay hidden -->
-            <!-- <a href=""><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            <a href=""><i class="fa-solid fa-scroll"></i> arXiv</a> -->
-            <a href="https://github.com/kha-kim-thuy/Sign-Diffusion-Model"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="https://kha-kim-thuy.github.io/SLP-Demo/"><i class="fa-solid fa-globe"></i> Project</a>
-            <!-- <a href=""><i class="fa-solid fa-link"></i> DOI</a> -->
+        </article>
+
+        <article class="paper">
+          <figure class="pm-media" data-playlist="[{&quot;type&quot;:&quot;video&quot;,&quot;src&quot;:&quot;assets/videos/ctf2023-teaser.mp4&quot;,&quot;poster&quot;:&quot;&quot;,&quot;caption&quot;:&quot;Language-grounded navigation in a 3D environment&quot;}]">
+            <video muted playsinline preload="metadata"></video>
+            <img class="pm-img" alt="" hidden>
+            <div class="pm-ph" aria-hidden="true"><i class="fa-solid fa-film"></i><span>Demo coming soon</span></div>
+            <figcaption><span class="pm-cap"></span><span class="pm-dots" role="group" aria-label="Choose video or image"></span></figcaption>
+          </figure>
+          <div class="paper-body">
+            <p class="venue-tag">KBS · 2023</p>
+            <h3>Coarse-to-Fine Fusion for Language Grounding in 3D Navigation</h3>
+            <p class="authors">Thanh Tin Nguyen†, <span class="me">Anh H. Vo</span>†, Soo-Mi Choi, Yong-Guk Kim*</p>
+            <p class="where">Knowledge-Based Systems, 277, 110785, 2023 · Korean Patent No. 10-2979119</p>
+            <div class="plinks"><!-- paste URLs between the quotes; empty ones stay hidden -->
+              <a href="https://doi.org/10.1016/j.knosys.2023.110785">Paper</a>
+              <a href="">Code</a>
+              <button class="bib-btn" type="button" aria-expanded="false">BibTeX</button>
+            </div>
+            <div class="bib" hidden><button class="bib-copy" type="button">Copy</button><pre>@article{nguyen2023coarse,
+  author  = {Nguyen, Thanh Tin and Vo, Anh H. and Choi, Soo-Mi and Kim, Yong-Guk},
+  title   = {{Coarse-to-Fine Fusion for Language Grounding in 3D Navigation}},
+  journal = {Knowledge-Based Systems},
+  volume  = {277},
+  pages   = {110785},
+  year    = {2023},
+  doi     = {10.1016/j.knosys.2023.110785}
+}</pre></div>
           </div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="venue">Neuro&shy;computing<br>2024</div>
-        <div>
-          <span class="title">A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification</span>
-          <span class="authors"><span class="me">Anh H. Vo</span>, Bao T. Nguyen*</span><br>
-          <span class="where">Neurocomputing, 565, 126972, 2024</span>
-          <div class="pub-links"><!-- Neurocomputing 2024: paste URLs between the quotes; empty ones stay hidden -->
-            <!-- <a href=""><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            <a href=""><i class="fa-solid fa-scroll"></i> arXiv</a> -->
-            <!-- <a href=""><i class="fa-brands fa-github"></i> Code</a> -->
-            <!-- <a href=""><i class="fa-solid fa-globe"></i> Project</a> -->
-            <!-- <a href=""><i class="fa-solid fa-link"></i> DOI</a> -->
+        </article>
+
+        <article class="paper">
+          <figure class="pm-media" data-playlist="[{&quot;type&quot;:&quot;video&quot;,&quot;src&quot;:&quot;assets/videos/neuro2024-teaser.mp4&quot;,&quot;caption&quot;:&quot;Interior style classification framework&quot;}]">
+            <video muted playsinline preload="metadata"></video>
+            <img class="pm-img" alt="" hidden>
+            <div class="pm-ph" aria-hidden="true"><i class="fa-solid fa-film"></i><span>Demo coming soon</span></div>
+            <figcaption><span class="pm-cap"></span><span class="pm-dots" role="group" aria-label="Choose video or image"></span></figcaption>
+          </figure>
+          <div class="paper-body">
+            <p class="venue-tag">Neurocomputing · 2024</p>
+            <h3>A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification</h3>
+            <p class="authors"><span class="me">Anh H. Vo</span>, Bao T. Nguyen*</p>
+            <p class="where">Neurocomputing, 565, 126972, 2024</p>
+            <div class="plinks"><!-- paste URLs between the quotes; empty ones stay hidden -->
+              <a href="https://doi.org/10.1016/j.neucom.2023.126972">Paper</a>
+              <a href="">Code</a>
+              <button class="bib-btn" type="button" aria-expanded="false">BibTeX</button>
+            </div>
+            <div class="bib" hidden><button class="bib-copy" type="button">Copy</button><pre>@article{vo2024framework,
+  author  = {Vo, Anh H. and Nguyen, Bao T.},
+  title   = {{A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification}},
+  journal = {Neurocomputing},
+  volume  = {565},
+  pages   = {126972},
+  year    = {2024},
+  doi     = {10.1016/j.neucom.2023.126972}
+}</pre></div>
           </div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="venue">NCAA<br>2023</div>
-        <div>
-          <span class="title">An Efficient Framework for Outfit Compatibility Prediction towards Occasion</span>
-          <span class="authors"><span class="me">Anh H. Vo</span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*</span><br>
-          <span class="where">Neural Computing and Applications, 35, 14213–14226, 2023</span>
-           <div class="pub-links"><!-- NCAA 2023: paste URLs between the quotes; empty ones stay hidden -->
-            <!-- <a href=""><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            <a href=""><i class="fa-solid fa-scroll"></i> arXiv</a>
-            <a href=""><i class="fa-brands fa-github"></i> Code</a>
-            <a href=""><i class="fa-solid fa-globe"></i> Project</a>
-            <a href=""><i class="fa-solid fa-link"></i> DOI</a> -->
-          </div> 
-        </div>
+        </article>
+
+        <article class="paper">
+          <figure class="pm-media" data-playlist="[{&quot;type&quot;:&quot;video&quot;,&quot;src&quot;:&quot;assets/videos/ncaa2023-teaser.mp4&quot;,&quot;caption&quot;:&quot;Outfit compatibility prediction framework&quot;}]">
+            <video muted playsinline preload="metadata"></video>
+            <img class="pm-img" alt="" hidden>
+            <div class="pm-ph" aria-hidden="true"><i class="fa-solid fa-film"></i><span>Demo coming soon</span></div>
+            <figcaption><span class="pm-cap"></span><span class="pm-dots" role="group" aria-label="Choose video or image"></span></figcaption>
+          </figure>
+          <div class="paper-body">
+            <p class="venue-tag">NCAA · 2023</p>
+            <h3>An Efficient Framework for Outfit Compatibility Prediction towards Occasion</h3>
+            <p class="authors"><span class="me">Anh H. Vo</span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*</p>
+            <p class="where">Neural Computing and Applications, 35, 14213–14226, 2023</p>
+            <div class="plinks"><!-- paste URLs between the quotes; empty ones stay hidden -->
+              <a href="https://doi.org/10.1007/s00521-023-08431-1">Paper</a>
+              <a href="">Code</a>
+              <button class="bib-btn" type="button" aria-expanded="false">BibTeX</button>
+            </div>
+            <div class="bib" hidden><button class="bib-copy" type="button">Copy</button><pre>@article{vo2023efficient,
+  author  = {Vo, Anh H. and Le, Tung B. T. and Pham, Huy V. and Nguyen, Bao T.},
+  title   = {{An Efficient Framework for Outfit Compatibility Prediction towards Occasion}},
+  journal = {Neural Computing and Applications},
+  volume  = {35},
+  pages   = {14213--14226},
+  year    = {2023},
+  doi     = {10.1007/s00521-023-08431-1}
+}</pre></div>
+          </div>
+        </article>
       </div>
 
-      <details>
-        <summary>Full publication list (23 papers)</summary>
+      <p class="more"><a href="publications.html">All 23 publications →</a></p>
+    </div>
+  </section>
 
-        <h3>Journal Articles (SCI/SCIE)</h3>
-        <ol class="list" reversed>
-          <li>Kim-Thuy Kha, <span class="me">Anh H. Vo</span>, Van-Vang Le*, Oh-Young Song, Yong-Guk Kim*. Temporal Diffuser: Timing Scale-Aware Modulation for Sign Language Production. <em>Engineering Applications of Artificial Intelligence</em>, 163, 112739, 2026.</li>
-          <li><span class="me">Anh H. Vo</span>, Tae-Seok Kim, Hulin Jin, Soo-Mi Choi, Yong-Guk Kim*. Instruction-Driven 3D Facial Expression Generation and Transition. <em>IEEE Transactions on Multimedia</em>, 27, 6140–6153, 2025.</li>
-          <li><span class="me">Anh H. Vo</span>, Bao T. Nguyen*. A Framework-Based Transformer and Knowledge Distillation for Interior Style Classification. <em>Neurocomputing</em>, 565, 126972, 2024.</li>
-          <li>Thanh Tin Nguyen†, <span class="me">Anh H. Vo</span>†, Soo-Mi Choi, Yong-Guk Kim*. Coarse-to-Fine Fusion for Language Grounding in 3D Navigation. <em>Knowledge-Based Systems</em>, 277, 110785, 2023.</li>
-          <li><span class="me">Anh H. Vo</span>, Tung B. T. Le, Huy V. Pham, Bao T. Nguyen*. An Efficient Framework for Outfit Compatibility Prediction towards Occasion. <em>Neural Computing and Applications</em>, 35, 14213–14226, 2023.</li>
-          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>, Huong Bui, Tuong Le*. A Hybrid Deep Learning Approach for PM2.5 Concentration Prediction in Smart Environmental Monitoring. <em>Intelligent Automation &amp; Soft Computing</em>, 36(3), 3029–3041, 2023.</li>
-          <li>Hung-Cuong Trinh*†, Van-Huy Pham, <span class="me">Anh H. Vo</span>. Remaining Useful Life Estimation Based on Noise Injection and a Kalman Filter Ensemble of Modified Bagging Predictors. <em>KSII Transactions on Internet and Information Systems</em>, 17(12), 2023.</li>
-          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>*, Tuong Le. A Robust Framework for Shoulder Implant X-ray Image Classification. <em>Data Technologies and Applications</em>, 2021.</li>
-          <li>Minh T. Vo, Trang Nguyen, <span class="me">H. Anh Vo</span>, Tuong Le*. Noise-Adaptive Synthetic Oversampling Technique. <em>Applied Intelligence</em>, 51, 7827–7836, 2021.</li>
-          <li>Minh T. Vo, <span class="me">Anh H. Vo</span>, Trang Nguyen, Rohit Sharma, Tuong Le*. Dealing with the Class Imbalance Problem in the Detection of Fake Job Descriptions. <em>Computers, Materials &amp; Continua</em>, 68(1), 521–535, 2021.</li>
-          <li><span class="me">Anh H. Vo</span>, Trang Nguyen, Tuong Le*. Brent Oil Price Prediction Using Bi-LSTM Network. <em>Intelligent Automation &amp; Soft Computing</em>, 26(6), 1307–1317, 2020.</li>
-          <li><span class="me">Anh H. Vo</span>, Minh T. Vo, L. H. Son, Tuong Le*. A Novel Framework for Trash Classification Using Deep Transfer Learning. <em>IEEE Access</em>, 7, 178631–178639, 2019.</li>
-        </ol>
+  <!-- News (uncomment and fill in when ready)
+  <section class="wrap section">
+    <h2 class="sec">News</h2>
+    <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+      <li style="display:flex;flex-wrap:wrap;gap:4px 24px"><span style="flex:0 0 96px;font-size:14px;font-weight:600;color:var(--muted)">Jun 2026</span><span style="flex:999 1 300px">Korean Patent No. 10-2979119 granted.</span></li>
+    </ul>
+  </section>
+  -->
+</main>
 
-        <h3>Journal Articles (Scopus)</h3>
-        <ol class="list" reversed>
-          <li>Bao T. Nguyen*, <span class="me">Anh H. Vo</span>. Detecting Lung Diseases from X-Ray Images Using Deep Learning. <em>Statistics, Optimization &amp; Information Computing</em>, 13(1), 297–308, 2024.</li>
-          <li>Bao T. Nguyen*, Son T. Nguyen, <span class="me">Anh H. Vo</span>. Channel and Spatial Attention Mechanism for Fashion Image Captioning. <em>International Journal of Electrical and Computer Engineering</em>, 13(5), 5833–5842, 2023.</li>
-          <li><span class="me">Anh H. Vo</span>, Hoa T. Dang, Bao T. Nguyen, Van-Huy Pham*. Vietnamese Herbal Plant Recognition Using Deep Convolutional Features. <em>International Journal of Machine Learning and Computing</em>, 9(3), 363–367, 2019.</li>
-          <li><span class="me">Anh H. Vo</span>, Huy V. Pham*, Bao T. Nguyen. Deep Learning for Vietnamese Sign Language in Video Sequences. <em>International Journal of Machine Learning and Computing</em>, 9(4), 440–445, 2019.</li>
-        </ol>
-
-        <h3>Conference Papers</h3>
-        <ol class="list" reversed>
-          <li>Khuong G. T. Diep, Viet-Tuan Le, Tae-Seok Kim, <span class="me">Anh H. Vo</span>, Yong-Guk Kim. Novel Reward Function for Autonomous Drone Navigating in Indoor Environment. <em>Annual Conference of KIPS</em>, 624–627, Busan, 2023. <span class="tag">Best Paper Award</span></li>
-          <li><span class="me">Anh H. Vo</span>, Nhu Nguyen, Thu Nguyen, Thu Dang, Duong Nguyen, Bao T. Nguyen*. An Automatic Recommendation System for Plant Disease Treatment. <em>GTSD</em>, Nha Trang, Vietnam, 2022.</li>
-          <li>Bao T. Nguyen*†, Om Prakash, <span class="me">Anh H. Vo</span>. Attention Mechanism for Fashion Image Captioning. <em>GTSD</em>, Da Nang, Vietnam, 2020.</li>
-          <li><span class="me">Anh H. Vo</span>, Nhu T. Q. Nguyen, Ngan T. B. Nguyen, Ta Van Giap, Van-Huy Pham*, Bao T. Nguyen*. Video-Based Vietnamese Sign Language Recognition Using Local Descriptors. <em>ACIIDS</em>, Yogyakarta, Indonesia, 2019.</li>
-          <li>Canh P. Nguyen, <span class="me">Anh H. Vo</span>, Bao T. Nguyen*. Breast Cancer Histology Image Classification Using Deep Learning. <em>ISCIT</em>, Ho Chi Minh City, Vietnam, 2019.</li>
-          <li><span class="me">Anh Vo</span>, Bao T. Nguyen*. Facial Expression Recognition Based on Salient Regions. <em>GTSD</em>, Ho Chi Minh City, Vietnam, 2018.</li>
-          <li><span class="me">Anh Vo</span>*, Ngoc Quoc Ly. Facial Expression Recognition Using Pyramid of Local Phase Quantization Descriptor. <em>KSE</em>, Springer, Hanoi, Vietnam, 2015.</li>
-        </ol>
-      </details>
-    </section>
-
-    <section id="patents">
-      <h2>Patents</h2>
-      <p><strong>Language Command-Based Coarse-to-Fine Fusion Method and Apparatus for Virtual Space Navigation</strong><br>
-        <span lang="ko">언어명령 기반 가상 공간 항해를 위한 코스-투-파인 융합 방법 및 그 장치</span><br>
-        Co-inventor · Korean Patent No. 10-2979119 · Granted June 15, 2026 (KIPO) · Assignee: Sejong University Industry-Academic Cooperation Foundation</p>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <div class="entry">
-        <span class="what">Ph.D. in Computer Science</span><span class="when">2022 – present</span>
-        <span class="where">Sejong University, Seoul, South Korea</span>
-      </div>
-      <div class="entry">
-        <span class="what">M.Sc. in Computer Science</span><span class="when">2015</span>
-        <span class="where">Ho Chi Minh City University of Science, Vietnam</span>
-      </div>
-      <div class="entry">
-        <span class="what">B.Sc. in Computer Science</span><span class="when">2011</span>
-        <span class="where">Ho Chi Minh City University of Science, Vietnam</span>
-      </div>
-      <div class="entry">
-        <span class="what">Erasmus+ Exchange Program</span><span class="when">2016</span>
-        <span class="where">Wroclaw University of Science and Technology, Poland</span>
-      </div>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="entry">
-        <span class="what">Graduate Researcher</span><span class="when">2022 – present</span>
-        <span class="where">Sejong University, Seoul, South Korea</span>
-        <ul>
-          <li>Instruction-driven 3D facial expression generation and transition (IEEE TMM 2025)</li>
-          <li>Coarse-to-fine multimodal fusion for language-grounded 3D navigation (KBS 2023; Korean Patent 10-2979119)</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <span class="what">Lecturer</span><span class="when">2012 – 2023</span>
-        <span class="where">Faculty of Information Technology, Ton Duc Thang University, Vietnam</span>
-        <ul>
-          <li>Taught Digital Image Processing, Computer Graphics, Applied Calculus, Linear Algebra, Numerical Analysis, and more</li>
-          <li>Supervised undergraduate theses, several leading to peer-reviewed publications</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="service">
-      <h2>Service &amp; Awards</h2>
-      <p><strong>Journal reviewer:</strong> Computer Vision and Image Understanding, IEEE Access,
-        Computers and Electrical Engineering, Intelligent Automation &amp; Soft Computing, The Imaging Science Journal.</p>
-      <div class="entry">
-        <span class="what">Best Paper Award, Korea Information Processing Society (KIPS)</span><span class="when">2023</span>
-      </div>
-      <div class="entry">
-        <span class="what">Erasmus+ Mobility Scholarship, Wroclaw University of Science and Technology</span><span class="when">2016</span>
-      </div>
-      <p class="sans" style="margin-top:12px;font-size:.92rem"><strong>Skills:</strong> Python, PyTorch, Keras, scikit-learn, OpenCV, OpenGL, Unity3D, C/C++, MATLAB, LaTeX</p>
-    </section>
-
-    <footer>Last updated November 2026</footer>
-  </main>
-</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Anh H. Vo · Sejong University</span>
+    <span>Last updated: November 2026</span>
+  </div>
+</footer>
+<script>
+// Selected-paper media. Each figure has data-playlist = [{type:"video"|"image", src, caption, poster}, ...].
+// Items play in turn (videos to the end, images for IMAGE_SECONDS) while the card is on screen.
+// Missing files are skipped; if none load, the "Demo coming soon" placeholder shows.
+(function(){
+  var IMAGE_SECONDS = 4;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var players = [];
+  document.querySelectorAll('.pm-media[data-playlist]').forEach(function(fig){
+    var list = []; try { list = JSON.parse(fig.getAttribute('data-playlist')) || []; } catch(e) {}
+    list = list.filter(function(x){ return x && x.src; });
+    var st = {fig: fig, v: fig.querySelector('video'), img: fig.querySelector('.pm-img'),
+              cap: fig.querySelector('.pm-cap'), list: list, i: 0, bad: {}, visible: false, timer: null};
+    if(!list.length){ fig.classList.add('no-media'); return; }
+    st.v.muted = true;
+    var dots = fig.querySelector('.pm-dots');
+    if(list.length > 1){
+      list.forEach(function(item, k){
+        var b = document.createElement('button'); b.type = 'button';
+        b.setAttribute('aria-label', (item.type === 'image' ? 'Image ' : 'Video ') + (k+1) + (item.caption ? ': ' + item.caption : ''));
+        b.addEventListener('click', function(){ show(st, k); });
+        dots.appendChild(b);
+      });
+    }
+    st.v.addEventListener('ended', function(){ if(st.list.length === 1){ st.v.currentTime = 0; resume(st); } else next(st); });
+    st.v.addEventListener('error', function(){ if(cur(st).type !== 'image') fail(st); });
+    st.img.addEventListener('error', function(){ if(cur(st).type === 'image') fail(st); });
+    st.img.addEventListener('load', function(){ if(cur(st).type === 'image') resume(st); });
+    show(st, 0);
+    players.push(st);
+  });
+  function cur(st){ return st.list[st.i]; }
+  function fail(st){
+    st.bad[st.i] = true;
+    var dot = st.fig.querySelectorAll('.pm-dots button')[st.i]; if(dot) dot.hidden = true;
+    if(Object.keys(st.bad).length >= st.list.length){ st.fig.classList.add('no-media'); return; }
+    next(st);
+  }
+  function next(st){
+    var n = st.list.length;
+    for(var step = 1; step <= n; step++){ var k = (st.i + step) % n; if(!st.bad[k]) return show(st, k); }
+  }
+  function show(st, k){
+    clearTimeout(st.timer);
+    var item = st.list[k]; st.i = k;
+    var isImg = item.type === 'image';
+    st.fig.classList.toggle('is-image', isImg);
+    st.img.hidden = !isImg;
+    if(isImg){
+      st.v.pause(); st.v.removeAttribute('src'); st.v.load();
+      st.img.src = item.src; st.img.alt = item.caption || '';
+      if(st.img.complete && st.img.naturalWidth) resume(st);
+    } else {
+      st.v.poster = item.poster || '';
+      st.v.src = item.src;
+      st.v.setAttribute('aria-label', item.caption || 'Demo video');
+      resume(st);
+    }
+    st.cap.textContent = item.caption || '';
+    st.fig.querySelectorAll('.pm-dots button').forEach(function(b, j){ b.setAttribute('aria-current', j === k ? 'true' : 'false'); });
+  }
+  function resume(st){
+    if(!st.visible || reduce) return;
+    if(cur(st).type === 'image'){
+      clearTimeout(st.timer);
+      if(st.list.length > 1) st.timer = setTimeout(function(){ next(st); }, IMAGE_SECONDS * 1000);
+    } else { st.v.play().catch(function(){}); }
+  }
+  function pause(st){ clearTimeout(st.timer); st.v.pause(); }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var st = players.find(function(p){ return p.fig === e.target; }); if(!st) return;
+        st.visible = e.isIntersecting;
+        if(st.visible) resume(st); else pause(st);
+      });
+    }, {threshold: 0.35});
+    players.forEach(function(st){ io.observe(st.fig); });
+  } else { players.forEach(function(st){ st.visible = true; resume(st); }); }
+})();
+</script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
